@@ -63,10 +63,10 @@ namespace cknewruler
             //프로빈스 주기
             string province_char = "";
             //가문 문장 만들기
-            string dynastyEmblem = "";
+            writeEmblem(dirs);
+
             //가문, 집안 만들기
-            string dynasty = "";
-            string house = "";
+            writeDynastyHouse(dirs);
 
 
         }
@@ -87,7 +87,7 @@ namespace cknewruler
             str_modstr += "supported_version=\"1.0.3\"";
             File.WriteAllText(val + modName + "\\descriptor.mod", str_modstr, Encoding.UTF8);
             str_modstr += Environment.NewLine;
-            str_modstr += "path=\"mod/new_ruler_mod\"";
+            str_modstr += "path=\"mod/"+modName_nonDir+"\"";
             File.WriteAllText(val + modName + ".mod", str_modstr, Encoding.UTF8);
         }
 
@@ -102,10 +102,12 @@ namespace cknewruler
         }
         private void btn_dnaParse_Click(object sender, EventArgs e)
         {
-            string encrypt = textBox_dna.Text;
+            /*string encrypt = textBox_dna.Text;
             encrypt = Base64Decode(encrypt);
             var decrypt = encrypt.Select(c => Convert.ToString(c, 16)).ToArray();
-            textBox_log.Text = decrypt.ToString();
+            textBox_log.Text = decrypt.ToString();*/
+            DirectoryInfo[] dirs=new DirectoryInfo[1];
+            writeDNAFile(dirs, false);
         }
         string dnaReturn(string[] decrypt,bool initialize = false)
         {
@@ -148,11 +150,11 @@ namespace cknewruler
             }
             try
             {
-                return results[isPositive(decrypt)];
+                return "\""+results[isPositive(decrypt)]+"\"";
             }
             catch
             {
-                return results[results.Count-1];
+                return "\""+results[results.Count-1]+ "\"";
             }
             
         }
@@ -162,6 +164,7 @@ namespace cknewruler
             /*시작연도-나이.1.1={birth=yes}시작연도-나이+70.1.1={death=yes}*/
             character += textBox_CharNum.Text + "={" + Environment.NewLine;
             character += "name = " + textBox_charName.Text + Environment.NewLine;
+            if (checkBox_isFemale.Checked) { character += "female = yes"; }
             character += "dynasty = " + textBox_dynNum.Text + Environment.NewLine;
             character += "religion = " + comboBox_religion.SelectedItem + Environment.NewLine;
             character += "culture = " + comboBox_culture.SelectedItem + Environment.NewLine;
@@ -184,7 +187,7 @@ namespace cknewruler
             character += "}";
             File.WriteAllText(dirs[7].ToString() + "\\" + textBox_tempName.Text + ".txt", character, Encoding.UTF8);
         }
-        void writeDNAFile(DirectoryInfo[] dirs)
+        void writeDNAFile(DirectoryInfo[] dirs,bool write=true)
         {
             bool isFemale = checkBox_isFemale.Checked;
             string dna = textBox_dna.Text;
@@ -291,6 +294,8 @@ namespace cknewruler
             dnastr += "face_detail_chin_cleft={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
             results.Clear(); results.Add("chin_def");
             dnastr += "face_detail_chin_def={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
+            results.Clear(); results.Add("eye_lower_lid_def");
+            dnastr += "face_detail_eye_lower_lid_def={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
             results.Clear(); results.Add("eye_socket_01"); results.Add("eye_socket_02"); results.Add("eye_socket_03");
             dnastr += "face_detail_eye_socket={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
             results.Clear(); results.Add("nasolabial_01"); results.Add("nasolabial_02"); results.Add("nasolabial_03"); results.Add("nasolabial_04");
@@ -315,7 +320,7 @@ namespace cknewruler
             dnastr += "gene_height={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
             results.Clear(); results.Add("body_average"); results.Add("body_fat_head_fat_low"); results.Add("body_fat_head_fat_medium"); results.Add("body_fat_head_fat_full"); results.Add("no_portrait");
             dnastr += "gene_bs_body_type={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
-            results.Clear(); results.Add("body_shape_average_clothed"); results.Add("body_shape_aver"); results.Add("body_shape_apple_half"); results.Add("body_shape_apple_full"); results.Add("body_shape_hourglass_half"); results.Add("body_shape_hourglass_full"); results.Add("body_shape_pear_half"); results.Add("body_shape_pear_full"); results.Add("body_shape_rectangle_half"); results.Add("body_shape_rectangle_full"); results.Add("body_shape_triangle_half"); results.Add("body_shape_triangle_full");
+            results.Clear(); results.Add("body_shape_average_clothed"); results.Add("body_shape_average"); results.Add("body_shape_apple_half"); results.Add("body_shape_apple_full"); results.Add("body_shape_hourglass_half"); results.Add("body_shape_hourglass_full"); results.Add("body_shape_pear_half"); results.Add("body_shape_pear_full"); results.Add("body_shape_rectangle_half"); results.Add("body_shape_rectangle_full"); results.Add("body_shape_triangle_half"); results.Add("body_shape_triangle_full");
             dnastr += "gene_bs_body_shape={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
             results.Clear(); results.Add("bust_clothes"); results.Add("bust_default"); results.Add("bust_shape_1_half"); results.Add("bust_shape_1_full"); results.Add("bust_shape_2_half"); results.Add("bust_shape_2_full"); results.Add("bust_shape_3_half"); results.Add("bust_shape_3_full"); results.Add("bust_shape_4_half"); results.Add("bust_shape_4_full");
             dnastr += "gene_bs_bust={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
@@ -325,7 +330,7 @@ namespace cknewruler
             dnastr += "gene_eyebrows_shape={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
             results.Clear(); results.Add("no_eyebrows"); results.Add("layer_2_avg_thickness"); results.Add("layer_2_high_thickness"); results.Add("layer_2_low_thickness"); results.Add("layer_2_lower_thickness");
             dnastr += "gene_eyebrows_fullness={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
-            results.Clear(); results.Add("body_hair_sparce"); results.Add("body_hair_avg"); results.Add("body_hair_dense"); results.Add("body_hair_sparse_low_stubble"); results.Add("body_hair_avg_low_stubble"); results.Add("body_hair_dense_low_stubble");
+            results.Clear(); results.Add("body_hair_sparse"); results.Add("body_hair_avg"); results.Add("body_hair_dense"); results.Add("body_hair_sparse_low_stubble"); results.Add("body_hair_avg_low_stubble"); results.Add("body_hair_dense_low_stubble");
             dnastr += "gene_body_hair={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
             results.Clear(); results.Add("all_hairstyles"); results.Add("no_hairstyles"); results.Add("western_hairstyles"); results.Add("mena_hairstyles"); results.Add("byzantine_hairstyles"); results.Add("sub_saharan_hairstyles"); results.Add("rtt_hairstyles"); results.Add("indian_hairstyles"); results.Add("northern_hairstyles"); results.Add("steppe_hairstyles"); results.Add("catholic_devoted_hairstyles"); results.Add("western_baby_hairstyles"); results.Add("sub_saharan_baby_hairstyles");
             dnastr += "hairstyles={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
@@ -339,7 +344,43 @@ namespace cknewruler
             dnastr += "eyelashes_accessory={ " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " " + nonposneg(decrypt, results) + " " + dnaReturn(decrypt) + " }" + Environment.NewLine;
             dnastr += "pose ={ \"\" 255 \"\" 0 }" + Environment.NewLine + "clothes ={ \"northern_high_nobility_clothes\" 152 \"most_clothes\" 0 }" + Environment.NewLine + "headgear ={ \"western_high_nobility\" 152 \"no_headgear\" 0 }" + Environment.NewLine + "legwear ={ \"western_common_legwear\" 152 \"all_legwear\" 0 }"+Environment.NewLine;
             dnastr += "}" + Environment.NewLine + "}" + Environment.NewLine + "enabled=yes" + Environment.NewLine + "}";
-            File.WriteAllText(dirs[4].ToString() + "\\" + textBox_tempName.Text + "_dna.txt", dnastr, Encoding.UTF8);
+            if (write) { File.WriteAllText(dirs[4].ToString() + "\\" + textBox_tempName.Text + "_dna.txt", dnastr, Encoding.UTF8); }
+            else { textBox_log.Text = dnastr; }
+        }
+        void writeEmblem(DirectoryInfo[] dirs)
+        {
+           string dynastyEmblem = "";
+            dynastyEmblem += textBox_dynNum.Text + "={" + Environment.NewLine;
+            dynastyEmblem += "pattern=\"" + comboBox_emblemPattern.SelectedItem + ".dds\""+Environment.NewLine;
+            dynastyEmblem += "color1=" + comboBox_PatternColor1.SelectedItem + Environment.NewLine;
+            dynastyEmblem += "color2=" + comboBox_PatternColor2.SelectedItem + Environment.NewLine;
+            dynastyEmblem += "colored_emblem={" + Environment.NewLine;
+            dynastyEmblem += "color1=" + comboBox_emblemColor1.SelectedItem+Environment.NewLine;
+            dynastyEmblem += "color2=" + comboBox_emblemColor2.SelectedItem + Environment.NewLine;
+            dynastyEmblem += "texture=\"" + comboBox_emblem.SelectedItem + ".dds\""+Environment.NewLine;
+            dynastyEmblem += "}"+Environment.NewLine;
+            dynastyEmblem += "}";
+            File.WriteAllText(dirs[3].ToString() + "\\" + textBox_tempName.Text + "_coa.txt", dynastyEmblem, Encoding.UTF8);
+        }
+        void writeDynastyHouse(DirectoryInfo[] dirs)
+        {
+            string dynasty = "";
+            string house = "";
+            dynasty += textBox_dynNum.Text+"={"+Environment.NewLine;
+            dynasty += "name=\"" + textBox_dynName.Text + "\"" + Environment.NewLine;
+            dynasty += "found_date=" + Convert.ToString(Convert.ToInt32(textBox_startYear.Text) - Convert.ToInt32(textBox_charAge.Text)) + ".1.1" + Environment.NewLine;
+            dynasty += "head_of_house=" + textBox_charName.Text + Environment.NewLine;
+            dynasty += "dynasty=" + textBox_dynNum.Text + Environment.NewLine;
+            dynasty += "historical={ " + textBox_CharNum.Text + " }" + Environment.NewLine;
+            dynasty += "coat_of_arms_id=" + textBox_dynNum.Text + Environment.NewLine;
+            dynasty += "motto=\"" + textBox_dynMotto.Text + "\"" + Environment.NewLine;
+            dynasty += "}";
+            house += "house_" + textBox_dynNum.Text + "={"+Environment.NewLine;
+            house += "name=\"" + textBox_dynName.Text + "\"" + Environment.NewLine;
+            house += "dynasty=" + textBox_dynNum.Text + Environment.NewLine;
+            house += "}";
+            File.WriteAllText(dirs[5].ToString() + "\\" + textBox_tempName.Text + "_dynasty.txt", dynasty, Encoding.UTF8);
+            File.WriteAllText(dirs[6].ToString() + "\\" + textBox_tempName.Text + "_houses.txt", house, Encoding.UTF8);
         }
     }
 }

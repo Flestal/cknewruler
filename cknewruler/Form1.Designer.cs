@@ -35,6 +35,8 @@
             this.groupBox_startKing = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.comboBox_culture = new System.Windows.Forms.ComboBox();
+            this.comboBox_religion = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox_charStat6 = new System.Windows.Forms.TextBox();
@@ -42,24 +44,30 @@
             this.textBox_charStat5 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox_charStat4 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox_charStat3 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_charStat2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_charStat1 = new System.Windows.Forms.TextBox();
             this.checkBox_isFemale = new System.Windows.Forms.CheckBox();
+            this.textBox_charName = new System.Windows.Forms.TextBox();
             this.textBox_charAge = new System.Windows.Forms.TextBox();
+            this.textBox_dna = new System.Windows.Forms.TextBox();
             this.textBox_CharNum = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox_dynNum = new System.Windows.Forms.TextBox();
             this.groupBox_startLand = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox_Dynasty = new System.Windows.Forms.GroupBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox_emblem = new System.Windows.Forms.ComboBox();
+            this.comboBox_emblemColor2 = new System.Windows.Forms.ComboBox();
             this.comboBox_PatternColor2 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_emblemColor1 = new System.Windows.Forms.ComboBox();
             this.comboBox_PatternColor1 = new System.Windows.Forms.ComboBox();
             this.comboBox_emblemPattern = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -70,8 +78,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_dynMotto = new System.Windows.Forms.TextBox();
+            this.textBox_dynName = new System.Windows.Forms.TextBox();
             this.groupBox_province = new System.Windows.Forms.GroupBox();
             this.btn_readtitlesFile = new System.Windows.Forms.Button();
             this.btn_addProvince = new System.Windows.Forms.Button();
@@ -82,14 +90,6 @@
             this.textBox_tempName = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.toolTip_readtitlesFile = new System.Windows.Forms.ToolTip(this.components);
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.comboBox_religion = new System.Windows.Forms.ComboBox();
-            this.comboBox_culture = new System.Windows.Forms.ComboBox();
-            this.textBox_charName = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.textBox_dna = new System.Windows.Forms.TextBox();
             this.textBox_log = new System.Windows.Forms.TextBox();
             this.btn_dnaParse = new System.Windows.Forms.Button();
             this.groupBox_startKing.SuspendLayout();
@@ -101,6 +101,145 @@
             // comboBox_Traits
             // 
             this.comboBox_Traits.FormattingEnabled = true;
+            this.comboBox_Traits.Items.AddRange(new object[] {
+            "education_intrigue_1",
+            "education_intrigue_2",
+            "education_intrigue_3",
+            "education_intrigue_4",
+            "education_diplomacy_1",
+            "education_diplomacy_2",
+            "education_diplomacy_3",
+            "education_diplomacy_4",
+            "education_stewardship_1",
+            "education_stewardship_2",
+            "education_stewardship_3",
+            "education_stewardship_4",
+            "education_martial_1",
+            "education_martial_2",
+            "education_martial_3",
+            "education_martial_4",
+            "education_learning_1",
+            "education_learning_2",
+            "education_learning_3",
+            "education_learning_4",
+            "education_martial_prowess_1",
+            "education_martial_prowess_2",
+            "education_martial_prowess_3",
+            "education_martial_prowess_4",
+            "brave",
+            "calm",
+            "chaste",
+            "content",
+            "diligent",
+            "fickle",
+            "forgiving",
+            "generous",
+            "gregarious",
+            "honest",
+            "humble",
+            "just",
+            "patient",
+            "temperate",
+            "trusting",
+            "zealous",
+            "compassionate",
+            "lustful",
+            "gluttonous",
+            "greedy",
+            "lazy",
+            "wrathful",
+            "impatient",
+            "arrogant",
+            "deceitful",
+            "craven",
+            "shy",
+            "ambitious",
+            "arbitrary",
+            "cynical",
+            "paranoid",
+            "callous",
+            "sadistic",
+            "stubborn",
+            "vengeful",
+            "depressed_1",
+            "depressed_genetic",
+            "lunatic_1",
+            "lunatic_genetic",
+            "possessed_1",
+            "possessed_genetic",
+            "fecund",
+            "albino",
+            "lisping",
+            "stuttering",
+            "pure_blooded",
+            "giant",
+            "scaly",
+            "clubfooted",
+            "dwarf",
+            "hunchbacked",
+            "infertile",
+            "wheezing",
+            "spindly",
+            "bleeder",
+            "beauty_bad_1",
+            "beauty_bad_2",
+            "beauty_bad_3",
+            "beauty_good_1",
+            "beauty_good_2",
+            "beauty_good_3",
+            "intellect_bad_1",
+            "intellect_bad_2",
+            "intellect_bad_3",
+            "intellect_good_1",
+            "intellect_good_2",
+            "intellect_good_3",
+            "physique_bad_1",
+            "physique_bad_2",
+            "physique_bad_3",
+            "physique_good_1",
+            "physique_good_2",
+            "physique_good_3",
+            "shrewd",
+            "strong",
+            "scarred",
+            "dull",
+            "weak",
+            "one_eyed",
+            "one_legged",
+            "disfigured",
+            "eunuch",
+            "august",
+            "diplomat",
+            "gallant",
+            "overseer",
+            "strategist",
+            "administrator",
+            "architect",
+            "avaricious",
+            "schemer",
+            "seducer",
+            "torturer",
+            "scholar",
+            "theologian",
+            "whole_of_body",
+            "celibate",
+            "family_first",
+            "lifestyle_herbalist",
+            "physician_1",
+            "physician_2",
+            "physician_3",
+            "blademaster_1",
+            "blademaster_2",
+            "blademaster_3",
+            "hunter_1",
+            "hunter_2",
+            "hunter_3",
+            "mystic_1",
+            "mystic_2",
+            "mystic_3",
+            "reveler_1",
+            "reveler_2",
+            "reveler_3"});
             this.comboBox_Traits.Location = new System.Drawing.Point(371, 54);
             this.comboBox_Traits.Name = "comboBox_Traits";
             this.comboBox_Traits.Size = new System.Drawing.Size(151, 28);
@@ -180,6 +319,28 @@
             this.label17.TabIndex = 5;
             this.label17.Text = "학습력";
             // 
+            // comboBox_culture
+            // 
+            this.comboBox_culture.FormattingEnabled = true;
+            this.comboBox_culture.Items.AddRange(new object[] {
+            "welsh",
+            "norse"});
+            this.comboBox_culture.Location = new System.Drawing.Point(57, 359);
+            this.comboBox_culture.Name = "comboBox_culture";
+            this.comboBox_culture.Size = new System.Drawing.Size(51, 28);
+            this.comboBox_culture.TabIndex = 3;
+            // 
+            // comboBox_religion
+            // 
+            this.comboBox_religion.FormattingEnabled = true;
+            this.comboBox_religion.Items.AddRange(new object[] {
+            "insular_celtic",
+            "norse_pagan"});
+            this.comboBox_religion.Location = new System.Drawing.Point(57, 323);
+            this.comboBox_religion.Name = "comboBox_religion";
+            this.comboBox_religion.Size = new System.Drawing.Size(51, 28);
+            this.comboBox_religion.TabIndex = 3;
+            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -238,6 +399,24 @@
             this.textBox_charStat4.Size = new System.Drawing.Size(51, 27);
             this.textBox_charStat4.TabIndex = 3;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(12, 362);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(39, 20);
+            this.label22.TabIndex = 5;
+            this.label22.Text = "문화";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(12, 326);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(39, 20);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "종교";
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -253,6 +432,24 @@
             this.textBox_charStat3.Name = "textBox_charStat3";
             this.textBox_charStat3.Size = new System.Drawing.Size(51, 27);
             this.textBox_charStat3.TabIndex = 3;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(174, 34);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(39, 20);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "이름";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(12, 73);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(41, 20);
+            this.label24.TabIndex = 5;
+            this.label24.Text = "DNA";
             // 
             // label2
             // 
@@ -296,12 +493,28 @@
             this.checkBox_isFemale.Text = "여성 군주 여부";
             this.checkBox_isFemale.UseVisualStyleBackColor = true;
             // 
+            // textBox_charName
+            // 
+            this.textBox_charName.Location = new System.Drawing.Point(219, 31);
+            this.textBox_charName.Name = "textBox_charName";
+            this.textBox_charName.Size = new System.Drawing.Size(74, 27);
+            this.textBox_charName.TabIndex = 3;
+            // 
             // textBox_charAge
             // 
             this.textBox_charAge.Location = new System.Drawing.Point(57, 288);
             this.textBox_charAge.Name = "textBox_charAge";
             this.textBox_charAge.Size = new System.Drawing.Size(51, 27);
             this.textBox_charAge.TabIndex = 3;
+            // 
+            // textBox_dna
+            // 
+            this.textBox_dna.Location = new System.Drawing.Point(15, 96);
+            this.textBox_dna.Multiline = true;
+            this.textBox_dna.Name = "textBox_dna";
+            this.textBox_dna.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_dna.Size = new System.Drawing.Size(336, 156);
+            this.textBox_dna.TabIndex = 3;
             // 
             // textBox_CharNum
             // 
@@ -351,10 +564,10 @@
             // 
             // groupBox_Dynasty
             // 
-            this.groupBox_Dynasty.Controls.Add(this.comboBox5);
-            this.groupBox_Dynasty.Controls.Add(this.comboBox3);
+            this.groupBox_Dynasty.Controls.Add(this.comboBox_emblem);
+            this.groupBox_Dynasty.Controls.Add(this.comboBox_emblemColor2);
             this.groupBox_Dynasty.Controls.Add(this.comboBox_PatternColor2);
-            this.groupBox_Dynasty.Controls.Add(this.comboBox2);
+            this.groupBox_Dynasty.Controls.Add(this.comboBox_emblemColor1);
             this.groupBox_Dynasty.Controls.Add(this.comboBox_PatternColor1);
             this.groupBox_Dynasty.Controls.Add(this.comboBox_emblemPattern);
             this.groupBox_Dynasty.Controls.Add(this.label10);
@@ -365,8 +578,8 @@
             this.groupBox_Dynasty.Controls.Add(this.label5);
             this.groupBox_Dynasty.Controls.Add(this.label19);
             this.groupBox_Dynasty.Controls.Add(this.label11);
-            this.groupBox_Dynasty.Controls.Add(this.textBox10);
-            this.groupBox_Dynasty.Controls.Add(this.textBox1);
+            this.groupBox_Dynasty.Controls.Add(this.textBox_dynMotto);
+            this.groupBox_Dynasty.Controls.Add(this.textBox_dynName);
             this.groupBox_Dynasty.Controls.Add(this.label3);
             this.groupBox_Dynasty.Controls.Add(this.textBox_dynNum);
             this.groupBox_Dynasty.Location = new System.Drawing.Point(729, 76);
@@ -376,41 +589,99 @@
             this.groupBox_Dynasty.TabStop = false;
             this.groupBox_Dynasty.Text = "시작 가문 편집";
             // 
-            // comboBox5
+            // comboBox_emblem
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(90, 284);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(118, 28);
-            this.comboBox5.TabIndex = 6;
+            this.comboBox_emblem.FormattingEnabled = true;
+            this.comboBox_emblem.Items.AddRange(new object[] {
+            "ce_wyvern_rising"});
+            this.comboBox_emblem.Location = new System.Drawing.Point(90, 284);
+            this.comboBox_emblem.Name = "comboBox_emblem";
+            this.comboBox_emblem.Size = new System.Drawing.Size(118, 28);
+            this.comboBox_emblem.TabIndex = 6;
             // 
-            // comboBox3
+            // comboBox_emblemColor2
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(134, 351);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(74, 28);
-            this.comboBox3.TabIndex = 6;
+            this.comboBox_emblemColor2.FormattingEnabled = true;
+            this.comboBox_emblemColor2.Items.AddRange(new object[] {
+            "black",
+            "blue",
+            "blue_light",
+            "brown",
+            "green",
+            "green_light",
+            "grey",
+            "orange",
+            "purple",
+            "red",
+            "white",
+            "yellow",
+            "yellow_light"});
+            this.comboBox_emblemColor2.Location = new System.Drawing.Point(134, 351);
+            this.comboBox_emblemColor2.Name = "comboBox_emblemColor2";
+            this.comboBox_emblemColor2.Size = new System.Drawing.Size(74, 28);
+            this.comboBox_emblemColor2.TabIndex = 6;
             // 
             // comboBox_PatternColor2
             // 
             this.comboBox_PatternColor2.FormattingEnabled = true;
+            this.comboBox_PatternColor2.Items.AddRange(new object[] {
+            "black",
+            "blue",
+            "blue_light",
+            "brown",
+            "green",
+            "green_light",
+            "grey",
+            "orange",
+            "purple",
+            "red",
+            "white",
+            "yellow",
+            "yellow_light"});
             this.comboBox_PatternColor2.Location = new System.Drawing.Point(134, 250);
             this.comboBox_PatternColor2.Name = "comboBox_PatternColor2";
             this.comboBox_PatternColor2.Size = new System.Drawing.Size(74, 28);
             this.comboBox_PatternColor2.TabIndex = 6;
             // 
-            // comboBox2
+            // comboBox_emblemColor1
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(134, 318);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(74, 28);
-            this.comboBox2.TabIndex = 6;
+            this.comboBox_emblemColor1.FormattingEnabled = true;
+            this.comboBox_emblemColor1.Items.AddRange(new object[] {
+            "black",
+            "blue",
+            "blue_light",
+            "brown",
+            "green",
+            "green_light",
+            "grey",
+            "orange",
+            "purple",
+            "red",
+            "white",
+            "yellow",
+            "yellow_light"});
+            this.comboBox_emblemColor1.Location = new System.Drawing.Point(134, 318);
+            this.comboBox_emblemColor1.Name = "comboBox_emblemColor1";
+            this.comboBox_emblemColor1.Size = new System.Drawing.Size(74, 28);
+            this.comboBox_emblemColor1.TabIndex = 6;
             // 
             // comboBox_PatternColor1
             // 
             this.comboBox_PatternColor1.FormattingEnabled = true;
+            this.comboBox_PatternColor1.Items.AddRange(new object[] {
+            "black",
+            "blue",
+            "blue_light",
+            "brown",
+            "green",
+            "green_light",
+            "grey",
+            "orange",
+            "purple",
+            "red",
+            "white",
+            "yellow",
+            "yellow_light"});
             this.comboBox_PatternColor1.Location = new System.Drawing.Point(134, 217);
             this.comboBox_PatternColor1.Name = "comboBox_PatternColor1";
             this.comboBox_PatternColor1.Size = new System.Drawing.Size(74, 28);
@@ -419,6 +690,8 @@
             // comboBox_emblemPattern
             // 
             this.comboBox_emblemPattern.FormattingEnabled = true;
+            this.comboBox_emblemPattern.Items.AddRange(new object[] {
+            "pattern_solid"});
             this.comboBox_emblemPattern.Location = new System.Drawing.Point(90, 184);
             this.comboBox_emblemPattern.Name = "comboBox_emblemPattern";
             this.comboBox_emblemPattern.Size = new System.Drawing.Size(118, 28);
@@ -496,19 +769,19 @@
             this.label11.TabIndex = 5;
             this.label11.Text = "가문 이름";
             // 
-            // textBox10
+            // textBox_dynMotto
             // 
-            this.textBox10.Location = new System.Drawing.Point(90, 93);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(266, 27);
-            this.textBox10.TabIndex = 3;
+            this.textBox_dynMotto.Location = new System.Drawing.Point(90, 93);
+            this.textBox_dynMotto.Name = "textBox_dynMotto";
+            this.textBox_dynMotto.Size = new System.Drawing.Size(266, 27);
+            this.textBox_dynMotto.TabIndex = 3;
             // 
-            // textBox1
+            // textBox_dynName
             // 
-            this.textBox1.Location = new System.Drawing.Point(250, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(106, 27);
-            this.textBox1.TabIndex = 3;
+            this.textBox_dynName.Location = new System.Drawing.Point(250, 30);
+            this.textBox_dynName.Name = "textBox_dynName";
+            this.textBox_dynName.Size = new System.Drawing.Size(106, 27);
+            this.textBox_dynName.TabIndex = 3;
             // 
             // groupBox_province
             // 
@@ -572,7 +845,7 @@
             this.btn_tempMake.Name = "btn_tempMake";
             this.btn_tempMake.Size = new System.Drawing.Size(251, 89);
             this.btn_tempMake.TabIndex = 5;
-            this.btn_tempMake.Text = "임시 모드 생성";
+            this.btn_tempMake.Text = "모드 생성";
             this.btn_tempMake.UseVisualStyleBackColor = true;
             this.btn_tempMake.Click += new System.EventHandler(this.btn_tempMake_Click);
             // 
@@ -591,74 +864,6 @@
             this.label20.Size = new System.Drawing.Size(74, 20);
             this.label20.TabIndex = 5;
             this.label20.Text = "모드 이름";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(12, 326);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(39, 20);
-            this.label21.TabIndex = 5;
-            this.label21.Text = "종교";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(12, 362);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(39, 20);
-            this.label22.TabIndex = 5;
-            this.label22.Text = "문화";
-            // 
-            // comboBox_religion
-            // 
-            this.comboBox_religion.FormattingEnabled = true;
-            this.comboBox_religion.Location = new System.Drawing.Point(57, 323);
-            this.comboBox_religion.Name = "comboBox_religion";
-            this.comboBox_religion.Size = new System.Drawing.Size(51, 28);
-            this.comboBox_religion.TabIndex = 3;
-            // 
-            // comboBox_culture
-            // 
-            this.comboBox_culture.FormattingEnabled = true;
-            this.comboBox_culture.Location = new System.Drawing.Point(57, 359);
-            this.comboBox_culture.Name = "comboBox_culture";
-            this.comboBox_culture.Size = new System.Drawing.Size(51, 28);
-            this.comboBox_culture.TabIndex = 3;
-            // 
-            // textBox_charName
-            // 
-            this.textBox_charName.Location = new System.Drawing.Point(219, 31);
-            this.textBox_charName.Name = "textBox_charName";
-            this.textBox_charName.Size = new System.Drawing.Size(74, 27);
-            this.textBox_charName.TabIndex = 3;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(174, 34);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(39, 20);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "이름";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(12, 73);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(41, 20);
-            this.label24.TabIndex = 5;
-            this.label24.Text = "DNA";
-            // 
-            // textBox_dna
-            // 
-            this.textBox_dna.Location = new System.Drawing.Point(15, 96);
-            this.textBox_dna.Multiline = true;
-            this.textBox_dna.Name = "textBox_dna";
-            this.textBox_dna.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_dna.Size = new System.Drawing.Size(336, 156);
-            this.textBox_dna.TabIndex = 3;
             // 
             // textBox_log
             // 
@@ -743,10 +948,10 @@
         private System.Windows.Forms.TextBox textBox_charStat1;
         private System.Windows.Forms.TextBox textBox_charAge;
         private System.Windows.Forms.GroupBox groupBox_Dynasty;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox_emblem;
+        private System.Windows.Forms.ComboBox comboBox_emblemColor2;
         private System.Windows.Forms.ComboBox comboBox_PatternColor2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox_emblemColor1;
         private System.Windows.Forms.ComboBox comboBox_PatternColor1;
         private System.Windows.Forms.ComboBox comboBox_emblemPattern;
         private System.Windows.Forms.Label label10;
@@ -757,8 +962,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_dynMotto;
+        private System.Windows.Forms.TextBox textBox_dynName;
         private System.Windows.Forms.GroupBox groupBox_province;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolTip toolTip_readtitlesFile;
