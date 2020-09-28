@@ -15,6 +15,7 @@ namespace cknewruler
 {
     public partial class Form1 : Form
     {
+        string version = "0.0.0.1";
         RegistryKey reg = Registry.CurrentUser;
         string val;
         DirectoryInfo dir;
@@ -24,6 +25,9 @@ namespace cknewruler
         public Form1()
         {
             InitializeComponent();
+            GitHubClient client = new GitHubClient(new ProductHeaderValue("cknewruler"));
+            var release = client.Repository.Release.GetLatest("Flestal", "cknewruler");
+
             reg = reg.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders", false);
             val = Convert.ToString(reg.GetValue("Personal"));
             val += "\\CK_CustomKingdom";
@@ -32,10 +36,29 @@ namespace cknewruler
             {
                 dir.Create();
             }
-            provinces = readProvinces(val);
-            refreshCulture(val);
-            refreshReligion(val);
-
+            try
+            {
+                provinces = readProvinces(val);
+                refreshCulture(val);
+                refreshReligion(val);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Form_firststart f = new Form_firststart();
+                f.ShowDialog();
+            }
+            catch (FileNotFoundException)
+            {
+                Form_firststart f = new Form_firststart();
+                f.ShowDialog();
+            }
+            label26.Text = "현재 버전 : " + version;
+            label27.Text = "최신 버전 : " + release.Result.TagName;
+            if (release.Result.TagName != version)
+            {
+                Form_update f = new Form_update();
+                f.ShowDialog();
+            }
         }
         void refreshCulture(string dir)
         {

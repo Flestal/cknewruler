@@ -95,6 +95,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.comboBox_startYear = new System.Windows.Forms.ComboBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.groupBox_startKing.SuspendLayout();
             this.groupBox_Dynasty.SuspendLayout();
             this.groupBox_province.SuspendLayout();
@@ -931,6 +933,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label27);
+            this.tabPage4.Controls.Add(this.label26);
             this.tabPage4.Controls.Add(this.comboBox_startYear);
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Controls.Add(this.btn_tempMake);
@@ -953,6 +957,24 @@
             this.comboBox_startYear.Name = "comboBox_startYear";
             this.comboBox_startYear.Size = new System.Drawing.Size(175, 28);
             this.comboBox_startYear.TabIndex = 6;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(18, 372);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(87, 20);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "현재 버전 : ";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(18, 405);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(87, 20);
+            this.label27.TabIndex = 8;
+            this.label27.Text = "최신 버전 : ";
             // 
             // Form1
             // 
@@ -1049,6 +1071,8 @@
         private System.Windows.Forms.ComboBox comboBox_startYear;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.ComboBox comboBox_kingdom;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
     }
 }
 
