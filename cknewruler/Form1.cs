@@ -15,13 +15,15 @@ namespace cknewruler
 {
     public partial class Form1 : Form
     {
-        string version = "0.0.0.1";
+        string version = "1.0.0.0";
         RegistryKey reg = Registry.CurrentUser;
         string val;
         DirectoryInfo dir;
         List<string[]> provinces;//[한글이름, 영어이름, 국가코드]
+        List<string> kingdoms;
         Dictionary<string, string> cultures;//한글이름 키, 영어이름 값
         Dictionary<string, string> religions;//한글이름 키, 영어이름 값
+        Dictionary<string, string> traits;
         public Form1()
         {
             InitializeComponent();
@@ -38,9 +40,16 @@ namespace cknewruler
             }
             try
             {
+                comboBox_kingdom.Items.Clear();
                 provinces = readProvinces(val);
+                foreach(string kingdom in kingdoms)
+                {
+                    comboBox_kingdom.Items.Add(kingdom);
+                }
                 refreshCulture(val);
                 refreshReligion(val);
+                refreshEmblem(val);
+                refreshTraits(val);
             }
             catch (DirectoryNotFoundException)
             {
@@ -69,7 +78,7 @@ namespace cknewruler
             while ((line = SR.ReadLine()) != null)
             {
                 string[] culture = line.Split(sp);
-                cultures.Add(culture[0], culture[1]);
+                cultures.Add(culture[1], culture[0]);
             }
             SR.Close();
             comboBox_culture.Items.Clear();
@@ -77,7 +86,7 @@ namespace cknewruler
             {
                 if (item.Key != "" && item.Value != "")
                 {
-                    comboBox_culture.Items.Add(item.Key);
+                    comboBox_culture.Items.Add(item.Value);
                 }
             }
         }
@@ -102,11 +111,46 @@ namespace cknewruler
                 }
             }
         }
+        void refreshEmblem(string dir)
+        {
+            StreamReader SR = new StreamReader(dir + "\\CSV\\emblems.csv");
+            string line;
+            char sp = ',';
+            comboBox_emblem.Items.Clear();
+            comboBox_emblemPattern.Items.Clear();
+            while ((line = SR.ReadLine()) != null)
+            {
+                string[] emblem = line.Split(sp);
+                comboBox_emblem.Items.Add(emblem[0]);
+            }
+            SR.Close();
+            SR = new StreamReader(dir + "\\CSV\\patterns.csv");
+            while ((line = SR.ReadLine()) != null)
+            {
+                string[] pattern = line.Split(sp);
+                comboBox_emblemPattern.Items.Add(pattern[0]);
+            }
+        }
+        void refreshTraits(string dir)
+        {
+            traits = new Dictionary<string, string>();//한글 키, 영어 값
+            StreamReader SR = new StreamReader(dir + "\\CSV\\traits.csv");
+            string line;
+            char sp = ',';
+            comboBox_Traits.Items.Clear();
+            while ((line = SR.ReadLine()) != null)
+            {
+                string[] split = line.Split(sp);//[0] 영어, [1] 한글
+                traits.Add(split[1],split[0]);
+                comboBox_Traits.Items.Add(split[1]);
+            }
+        }
         List<string[]> readProvinces(string dir)
         {
             StreamReader SR = new StreamReader(dir+"\\CSV\\provincelist.csv");
             //Dictionary<string, string[]> returnValue = new Dictionary<string, string[]>();
             List<string[]> returnValue = new List<string[]>();
+            kingdoms = new List<string>();
             returnValue.Clear();
             string line;
             char sp = ',';
@@ -114,7 +158,14 @@ namespace cknewruler
             {
                 string[] province = line.Split(sp);
                 //returnValue.Add(province[2],temp);
-                returnValue.Add(province);
+                if (province[0] != "")
+                {
+                    returnValue.Add(province);
+                    if (!kingdoms.Contains(province[2]))
+                    {
+                        kingdoms.Add(province[2]);
+                    }
+                }
             }
             SR.Close();
             return returnValue;
@@ -131,6 +182,7 @@ namespace cknewruler
                 }
             }
         }
+
         private void btn_tempMake_Click(object sender, EventArgs e)
         {
             string modName = "\\" + textBox_tempName.Text;
@@ -181,7 +233,7 @@ namespace cknewruler
             str_modstr += Environment.NewLine;
             str_modstr += "name=\"" + modName_nonDir + "\"";
             str_modstr += Environment.NewLine;
-            str_modstr += "supported_version=\"1.0.3\"";
+            str_modstr += "supported_version=\"1.1.*\"";
             File.WriteAllText(val + modName + "\\descriptor.mod", str_modstr, Encoding.UTF8);
             str_modstr += Environment.NewLine;
             str_modstr += "path=\"mod/"+modName_nonDir+"\"";
@@ -221,9 +273,9 @@ namespace cknewruler
             string selectedCulture ="";
             foreach(KeyValuePair<string,string> item in cultures)
             {
-                if (item.Key == comboBox_culture.SelectedItem)
+                if (item.Value == comboBox_culture.SelectedItem)
                 {
-                    selectedCulture = item.Value;
+                    selectedCulture = item.Key;
                     break;
                 }
             }
@@ -290,7 +342,11 @@ namespace cknewruler
 
         private void btn_addTrait_Click(object sender, EventArgs e)
         {
-            addlist_Traits.Items.Add(comboBox_Traits.SelectedItem);
+            //addlist_Traits.Items.Add(comboBox_Traits.SelectedItem);
+            if (comboBox_Traits.SelectedItem!=null&&traits.ContainsKey(comboBox_Traits.SelectedItem.ToString()))
+            {
+                addlist_Traits.Items.Add(traits[comboBox_Traits.SelectedItem.ToString()]);
+            }
         }
 
         private void comboBox_kingdom_SelectedIndexChanged(object sender, EventArgs e)
@@ -309,6 +365,22 @@ namespace cknewruler
                         listBox_startProvince.Items.Add(item[1]);
                     }
                 }
+            }
+        }
+
+        private void btn_removeTrait_Click(object sender, EventArgs e)
+        {
+            if (addlist_Traits.SelectedItem != null)
+            {
+                addlist_Traits.Items.RemoveAt(addlist_Traits.SelectedIndex);
+            }
+        }
+
+        private void btn_removeProvince_Click(object sender, EventArgs e)
+        {
+            if (listBox_startProvince.SelectedItem != null)
+            {
+                listBox_startProvince.Items.RemoveAt(listBox_startProvince.SelectedIndex);
             }
         }
     }

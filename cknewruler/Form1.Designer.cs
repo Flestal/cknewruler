@@ -64,6 +64,9 @@
             this.textBox_dynNum = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox_Dynasty = new System.Windows.Forms.GroupBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.comboBox_emblem = new System.Windows.Forms.ComboBox();
             this.comboBox_emblemColor2 = new System.Windows.Forms.ComboBox();
             this.comboBox_PatternColor2 = new System.Windows.Forms.ComboBox();
@@ -94,11 +97,14 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.comboBox_startYear = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.comboBox_startYear = new System.Windows.Forms.ComboBox();
+            this.btn_removeTrait = new System.Windows.Forms.Button();
+            this.btn_removeProvince = new System.Windows.Forms.Button();
             this.groupBox_startKing.SuspendLayout();
             this.groupBox_Dynasty.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox_province.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -303,6 +309,7 @@
             this.groupBox_startKing.Controls.Add(this.textBox_charAge);
             this.groupBox_startKing.Controls.Add(this.textBox_dna);
             this.groupBox_startKing.Controls.Add(this.textBox_CharNum);
+            this.groupBox_startKing.Controls.Add(this.btn_removeTrait);
             this.groupBox_startKing.Controls.Add(this.btn_addTrait);
             this.groupBox_startKing.Controls.Add(this.addlist_Traits);
             this.groupBox_startKing.Controls.Add(this.comboBox_Traits);
@@ -579,6 +586,9 @@
             // 
             // groupBox_Dynasty
             // 
+            this.groupBox_Dynasty.Controls.Add(this.label29);
+            this.groupBox_Dynasty.Controls.Add(this.pictureBox1);
+            this.groupBox_Dynasty.Controls.Add(this.label28);
             this.groupBox_Dynasty.Controls.Add(this.comboBox_emblem);
             this.groupBox_Dynasty.Controls.Add(this.comboBox_emblemColor2);
             this.groupBox_Dynasty.Controls.Add(this.comboBox_PatternColor2);
@@ -603,6 +613,33 @@
             this.groupBox_Dynasty.TabIndex = 7;
             this.groupBox_Dynasty.TabStop = false;
             this.groupBox_Dynasty.Text = "시작 가문 편집";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(362, 220);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(486, 20);
+            this.label29.TabIndex = 9;
+            this.label29.Text = "게임 설치 폴더 : 스팀 게임 이름에서 우클릭 -> 관리 -> 로컬 파일 보기";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::cknewruler.Properties.Resources.로컬파일;
+            this.pictureBox1.Location = new System.Drawing.Point(366, 247);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(503, 182);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(362, 190);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(538, 20);
+            this.label28.TabIndex = 7;
+            this.label28.Text = "배경 및 엠블럼은 설치 폴더의 \\game\\gfx\\coat_of_arms에서 보면서 고르세요";
             // 
             // comboBox_emblem
             // 
@@ -705,8 +742,6 @@
             // comboBox_emblemPattern
             // 
             this.comboBox_emblemPattern.FormattingEnabled = true;
-            this.comboBox_emblemPattern.Items.AddRange(new object[] {
-            "pattern_solid"});
             this.comboBox_emblemPattern.Location = new System.Drawing.Point(202, 187);
             this.comboBox_emblemPattern.Name = "comboBox_emblemPattern";
             this.comboBox_emblemPattern.Size = new System.Drawing.Size(154, 28);
@@ -762,9 +797,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(122, 190);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 20);
+            this.label5.Size = new System.Drawing.Size(39, 20);
             this.label5.TabIndex = 5;
-            this.label5.Text = "문장 패턴";
+            this.label5.Text = "배경";
             // 
             // label19
             // 
@@ -801,6 +836,7 @@
             // groupBox_province
             // 
             this.groupBox_province.Controls.Add(this.label25);
+            this.groupBox_province.Controls.Add(this.btn_removeProvince);
             this.groupBox_province.Controls.Add(this.btn_addProvince);
             this.groupBox_province.Controls.Add(this.comboBox_kingdom);
             this.groupBox_province.Controls.Add(this.comboBox_provinces);
@@ -947,6 +983,24 @@
             this.tabPage4.Text = "그 외 설정 및 완료";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(18, 405);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(87, 20);
+            this.label27.TabIndex = 8;
+            this.label27.Text = "최신 버전 : ";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(18, 372);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(87, 20);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "현재 버전 : ";
+            // 
             // comboBox_startYear
             // 
             this.comboBox_startYear.FormattingEnabled = true;
@@ -958,23 +1012,25 @@
             this.comboBox_startYear.Size = new System.Drawing.Size(175, 28);
             this.comboBox_startYear.TabIndex = 6;
             // 
-            // label26
+            // btn_removeTrait
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(18, 372);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(87, 20);
-            this.label26.TabIndex = 7;
-            this.label26.Text = "현재 버전 : ";
+            this.btn_removeTrait.Location = new System.Drawing.Point(949, 156);
+            this.btn_removeTrait.Name = "btn_removeTrait";
+            this.btn_removeTrait.Size = new System.Drawing.Size(118, 46);
+            this.btn_removeTrait.TabIndex = 2;
+            this.btn_removeTrait.Text = "제거";
+            this.btn_removeTrait.UseVisualStyleBackColor = true;
+            this.btn_removeTrait.Click += new System.EventHandler(this.btn_removeTrait_Click);
             // 
-            // label27
+            // btn_removeProvince
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(18, 405);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(87, 20);
-            this.label27.TabIndex = 8;
-            this.label27.Text = "최신 버전 : ";
+            this.btn_removeProvince.Location = new System.Drawing.Point(183, 113);
+            this.btn_removeProvince.Name = "btn_removeProvince";
+            this.btn_removeProvince.Size = new System.Drawing.Size(167, 28);
+            this.btn_removeProvince.TabIndex = 2;
+            this.btn_removeProvince.Text = "제거";
+            this.btn_removeProvince.UseVisualStyleBackColor = true;
+            this.btn_removeProvince.Click += new System.EventHandler(this.btn_removeProvince_Click);
             // 
             // Form1
             // 
@@ -990,6 +1046,7 @@
             this.groupBox_startKing.PerformLayout();
             this.groupBox_Dynasty.ResumeLayout(false);
             this.groupBox_Dynasty.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox_province.ResumeLayout(false);
             this.groupBox_province.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -1073,6 +1130,11 @@
         private System.Windows.Forms.ComboBox comboBox_kingdom;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Button btn_removeTrait;
+        private System.Windows.Forms.Button btn_removeProvince;
     }
 }
 
