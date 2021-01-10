@@ -233,7 +233,7 @@ namespace cknewruler
             str_modstr += Environment.NewLine;
             str_modstr += "name=\"" + modName_nonDir + "\"";
             str_modstr += Environment.NewLine;
-            str_modstr += "supported_version=\"1.1.*\"";
+            str_modstr += "supported_version=\"1.2.*\"";
             File.WriteAllText(val + modName + "\\descriptor.mod", str_modstr, Encoding.UTF8);
             str_modstr += Environment.NewLine;
             str_modstr += "path=\"mod/"+modName_nonDir+"\"";
